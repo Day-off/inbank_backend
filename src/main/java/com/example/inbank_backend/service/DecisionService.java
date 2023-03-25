@@ -62,11 +62,15 @@ public class DecisionService {
 
     private List<String> countOfferPeriod(Double creditModifier, double amount) {
         double offerPeriod = 1 / (creditModifier / amount);
-        if (offerPeriod >= MINPERIOD && offerPeriod <= MAXPERIOD) {
+        if (isSuitablePeriod(offerPeriod)) {
             return createOffer(offerPeriod, amount);
         } else {
             return createOffer(MAXPERIOD, creditModifier * MAXPERIOD);
         }
+    }
+
+    private static boolean isSuitablePeriod(double offerPeriod) {
+        return offerPeriod >= MINPERIOD && offerPeriod <= MAXPERIOD;
     }
 
     private List<String> createOffer(double period, double offerMaxSum) {
@@ -77,7 +81,7 @@ public class DecisionService {
         return offer;
     }
 
-    public String messageCreator(double offerSum, double offerPeriod) {
+    private String messageCreator(double offerSum, double offerPeriod) {
         return "We can offer to you maxSum: " + offerSum + " on period " + offerPeriod + " month";
     }
 

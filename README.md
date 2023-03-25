@@ -18,11 +18,10 @@ You can do this with Ctrl + Shift + f10
 ## Some notes
 ### Functionality that has been implemented
 
-- Checking whether the customer can get
+- Checking if customer can get requested loan (no debt)
 - Checking if the bank can provide the requested loan
-- If unsuccessful, there is a recalculation of the loan amount or period that the bank can offer the client
+- If not, there is a recalculation of the loan amount or period that the bank can offer the client
 
 ### Experience
 
-- The most difficult part on the back for me was the parsing of the xml response, because I had never worked with this type of language before. 
- 
+- I have experience with the back end, so there was nothing difficult except figuring out how to hard code the data in a decent way, normally I'm used to working with databases and repositories.
