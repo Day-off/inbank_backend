@@ -33,13 +33,17 @@ public class DecisionService {
         if (creditModifier == 0) {
             return mapDecision(LoanStatus.REJECTED, "", "", "You have a debt.");
         } else {
-            double creditScore = (creditModifier / amount) * period;
-            List<String> offer = countOffer(creditModifier, amount, period);
-            if (creditScore < 1d) {
-                return mapDecision(LoanStatus.PROPOSITIONED, offer.get(0), offer.get(1), offer.get(2));
-            } else {
-                return mapDecision(LoanStatus.APPROVED, String.valueOf(amount), String.valueOf(period), offer.get(2));
-            }
+            return makeOffer(amount, period, creditModifier);
+        }
+    }
+
+    private DecisionDto makeOffer(double amount, double period, Double creditModifier) {
+        double creditScore = (creditModifier / amount) * period;
+        List<String> offer = countOffer(creditModifier, amount, period);
+        if (creditScore < 1d) {
+            return mapDecision(LoanStatus.PROPOSITIONED, offer.get(0), offer.get(1), offer.get(2));
+        } else {
+            return mapDecision(LoanStatus.APPROVED, String.valueOf(amount), String.valueOf(period), offer.get(2));
         }
     }
 
