@@ -1,4 +1,4 @@
-# 1oT_Backend
+# Inbank_Backend
 ## Technology used:
 
 - Gradle: 7.6.1
