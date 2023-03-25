@@ -19,7 +19,7 @@ public class DecisionService {
     private final HashMap<String, Double> clientData = new HashMap<>();
 
     public void setClientData() {
-        this.clientData.put("49002010965", 0d)
+        this.clientData.put("49002010965", 0d);
         this.clientData.put("49002010976", 100d);
         this.clientData.put("49002010987", 300d);
         this.clientData.put("49002010998", 1000d);
