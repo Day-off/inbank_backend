@@ -11,7 +11,7 @@
 ```
 or
 ```
-run following file src/main/java/com/example/iot_backend/InbankBackendApplication.java
+run following file src/main/java/com/example/inbank_backend/InbankBackendApplication.java
 You can do this with Ctrl + Shift + f10
 ```
 
