@@ -12,12 +12,14 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class DecisionService {
-
-
+    public static final int MINSUM = 2000;
+    public static final int MAXSUM = 10000;
+    public static final int MINPERIOD = 12;
+    public static final int MAXPERIOD = 60;
     private final HashMap<String, Double> clientData = new HashMap<>();
 
     public void setClientData() {
-        this.clientData.put("49002010965", 0d);
+        this.clientData.put("49002010965", 0d)
         this.clientData.put("49002010976", 100d);
         this.clientData.put("49002010987", 300d);
         this.clientData.put("49002010998", 1000d);
@@ -49,10 +51,10 @@ public class DecisionService {
 
     private List<String> countOffer(Double creditModifier, double amount, double period) {
         double offerMaxSum = creditModifier * period;
-        if (offerMaxSum >= 2000 && offerMaxSum <= 10000) {
+        if (offerMaxSum >= MINSUM && offerMaxSum <= MAXSUM) {
             return createOffer(period, offerMaxSum);
-        } else if (offerMaxSum > 10000) {
-            return createOffer(period, 10000);
+        } else if (offerMaxSum > MAXSUM) {
+            return createOffer(period, MAXSUM);
         } else {
             return countOfferPeriod(creditModifier, amount);
         }
@@ -60,10 +62,10 @@ public class DecisionService {
 
     private List<String> countOfferPeriod(Double creditModifier, double amount) {
         double offerPeriod = 1 / (creditModifier / amount);
-        if (offerPeriod >= 12 && offerPeriod <= 60) {
+        if (offerPeriod >= MINPERIOD && offerPeriod <= MAXPERIOD) {
             return createOffer(offerPeriod, amount);
         } else {
-            return createOffer(60, creditModifier * 60);
+            return createOffer(MAXPERIOD, creditModifier * MAXPERIOD);
         }
     }
 
